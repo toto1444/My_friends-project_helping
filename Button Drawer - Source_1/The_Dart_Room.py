@@ -77,6 +77,7 @@ def settings():
 			gameDisplay.blit(TS, TR)
 
 			button ("back",150, 450, 100, 50, green, bright_green, game_menu)
+			print "YEE"
 
 			pygame.display.update()
 			clock.tick(30)
