@@ -123,10 +123,11 @@ def start():
                 quit()
             button(inventoryButton, 10, 3, getRect(inventoryButton).width, getRect(inventoryButton).height, inventory)
             button(settingsInGameButton, 10, 120, getRect(settingsInGameButton).width, getRect(settingsInGameButton).height, settingsInGame)
+            pygame.display.update()
 
             introdialog.dialogue()
+            
 
-            pygame.display.update()
             clock.tick(60)
 
 

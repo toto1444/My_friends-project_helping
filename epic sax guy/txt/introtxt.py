@@ -5,7 +5,7 @@ pygame.init()
 fontObj = pygame.font.Font("font/sans.ttf", 32)
 white = 255, 255, 255
 screen = pygame.display.set_mode((1280, 720))
-window = pygame.image.load("txt/txtwin.png")
+window = pygame.image.load("txt/txtwin2.png")
 global i
 
 def commontext2(a, b):
