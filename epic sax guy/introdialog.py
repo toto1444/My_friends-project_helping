@@ -5,14 +5,14 @@ pygame.init()
 
 def dialogue():
     monologue = True
-    p, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15 = False,False,False,False,False,False,False,False,False,False,False,False,False,False,False
+    p = True
 
     # Main loop
     while monologue:
         for event in pygame.event.get():
             if event.type == KEYUP:
                 if event.key == K_SPACE:
-                    p = True
+                    pause = True
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()

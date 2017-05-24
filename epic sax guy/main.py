@@ -1,4 +1,4 @@
-import pygame, txt.introtxt, time, introdialog
+import pygame, txt.introtxt, time, introdialog, ingame
 from pygame.locals import*
 
 pygame.init()
@@ -17,10 +17,7 @@ achievementMenu = pygame.image.load("img/achievementMenu.png")
 leaderboardMenu = pygame.image.load("img/leaderboardMenu.png")
 galleryMenu = pygame.image.load("img/galleryMenu.png")
 startMenu = pygame.image.load("img/startSample.png")
-inventoryButton = pygame.image.load("img/inventoryButton.png")
-settingsInGameButton = pygame.image.load("img/settingsButton.png")
-inventoryMenu = pygame.image.load("img/inventory.png")
-arrowLeft = pygame.image.load("img/arrow.png")
+
 favicon = pygame.image.load("img/icon.png")
 pygame.display.set_icon(favicon)
 
@@ -87,30 +84,11 @@ def paused():
         pygame.display.update()
         clock.tick(60)
 
-def inventory():
-    inventory = True
-    while inventory:
-        screen.blit(inventoryMenu, (0, 0))
-        for startScreen in pygame.event.get():
-            if startScreen.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-        button(arrowLeft, 1150, 60, getRect(arrowLeft).width, getRect(arrowLeft).height, start)
-        pygame.display.update()
-        clock.tick(60)
 
-def settingsInGame():
-    settingsInGame = True
-    while settingsInGame:
-        screen.blit(settingsMenu, (0, 0))
-        for settingsScreen in pygame.event.get():
-            if settingsScreen.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-            button(backButton, 1050, 50, getRect(backButton).width, getRect(backButton).height, start)
-            button(exitButton, 1050, 110, getRect(exitButton).width, getRect(exitButton).height, gameMenu)
-            pygame.display.update()
-            clock.tick(60)
+
+
+
+
 
 def settings():
     settings = True
@@ -160,6 +138,23 @@ def leaderboard():
             pygame.display.update()
             clock.tick(60)
 
+def start():
+    pygame.mixer.music.stop()
+    start = True
+    while start:
+        screen.blit(startMenu, (0, 0))
+        for startScreen in pygame.event.get():
+            if startScreen.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            button(ingame.inventoryButton, 10, 3, getRect(ingame.inventoryButton).width, getRect(ingame.inventoryButton).height, ingame.inventory)
+            button(ingame.settingsInGameButton, 10, 120, getRect(ingame.settingsInGameButton).width, getRect(ingame.settingsInGameButton).height, ingame.settingsInGame)
+            pygame.display.update()
+
+            ingame.introDialog()
+
+            clock.tick(60)
+
 def gameMenu():
     pygame.mixer.music.play(-1)
     intro = True
@@ -182,28 +177,5 @@ def gameMenu():
 
         pygame.display.update()
         clock.tick(60)
-
-
-def start():
-    pygame.mixer.music.stop()
-    start = True
-    while start:
-        screen.blit(startMenu, (0, 0))
-        for startScreen in pygame.event.get():
-            if startScreen.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-            button(inventoryButton, 10, 3, getRect(inventoryButton).width, getRect(inventoryButton).height, inventory)
-            button(settingsInGameButton, 10, 120, getRect(settingsInGameButton).width,
-                   getRect(settingsInGameButton).height, settingsInGame)
-            pygame.display.update()
-
-            introDiag()
-
-            clock.tick(60)
-
-def introDiag():
-    introdialog.dialogue()
-    start()
 
 gameMenu()
